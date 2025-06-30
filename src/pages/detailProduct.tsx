@@ -1,6 +1,7 @@
 import { useParams, Link as RouterLink } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { addToCart } from "../redux/features/cartSlice";
+// import { addToCart } from "../redux/features/cartSlice";
+import { useCartStore } from "@/zustand/cartStore";
 import { showNotification } from "@/redux/features/notificationSlice";
 import { fetchProductById } from '@/api/products';
 import { useQuery } from "@tanstack/react-query";
@@ -12,6 +13,7 @@ import Button from "@/components/Elements/Button";
 const DetailProductPage = () => {
     const { id } = useParams<{ id: string }>();
     const dispatch: AppDispatch = useDispatch();
+    const { addToCart } = useCartStore();
 
     const { data: product, isLoading, isError, error } = useQuery({
         queryKey: ['product', id],
@@ -45,7 +47,7 @@ const DetailProductPage = () => {
     }
 
     const handleAddToCart = (productToAdd: Product) => {
-        dispatch(addToCart(productToAdd));
+        addToCart(productToAdd);
         dispatch(showNotification({
             message: `Successfully added "${productToAdd.title.substring(0, 20)}..." to cart`,
             type: 'success'

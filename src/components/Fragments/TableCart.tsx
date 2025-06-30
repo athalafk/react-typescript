@@ -1,10 +1,13 @@
 import { useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { removeItem, clearCart } from "@/redux/features/cartSlice";
+// import { removeItem, clearCart } from "@/redux/features/cartSlice";
+import { useCartStore } from '@/zustand/cartStore';
 import { showNotification } from "@/redux/features/notificationSlice";
-import { RootState, AppDispatch } from '@/redux/store';
+import { AppDispatch } from '@/redux/store';
+// import { RootState } from '@/redux/store';
 import { CartItem } from '@/types';
 import {
     Paper, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton
@@ -13,14 +16,16 @@ import Button from '@/components/Elements/Button';
 
 const TableCart = () => {
     const dispatch: AppDispatch = useDispatch();
-    const cart = useSelector((state: RootState) => state.cart.data);
+    // const cart = useSelector((state: RootState) => state.cart.data);
+    const { data: cart, removeItem, clearCart } = useCartStore();
 
     const totalPrice = useMemo(() => {
         return cart.reduce((acc, item) => acc + item.price * item.qty, 0);
     }, [cart]);
 
     const handleRemoveItem = (item: CartItem) => {
-        dispatch(removeItem(item.id));
+        // dispatch(removeItem(item.id));
+        removeItem(item.id);
         dispatch(showNotification({
             message: `Removed "${item.title.substring(0, 20)}..." from cart`,
             type: 'error'
@@ -28,7 +33,8 @@ const TableCart = () => {
     };
 
     const handleClearCart = () => {
-        dispatch(clearCart());
+        // dispatch(clearCart());
+        clearCart();
         dispatch(showNotification({
             message: "Cart has been cleared successfully",
             type: 'error'

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { addToCart } from "@/redux/features/cartSlice";
+// import { addToCart } from "@/redux/features/cartSlice";
+import { useCartStore } from "@/zustand/cartStore";
 import { showNotification } from "@/redux/features/notificationSlice";
 import { fetchProducts } from '@/api/products';
 import { useQuery } from '@tanstack/react-query';
@@ -14,6 +15,7 @@ import TableCart from "@/components/Fragments/TableCart";
 const ProductsPage = () => {
     const [search, setSearch] = useState("");
     const dispatch: AppDispatch = useDispatch();
+    const { addToCart } = useCartStore();
 
     const { data: allProducts = [], isLoading, isError, error } = useQuery({
         queryKey: ['products'],
@@ -25,7 +27,7 @@ const ProductsPage = () => {
     );
 
     const handleAddToCart = (product: ProductType) => {
-        dispatch(addToCart(product));
+        addToCart(product);
         dispatch(showNotification({
             message: `Successfully added "${product.title.substring(0, 20)}..." to cart`,
             type: 'success'
