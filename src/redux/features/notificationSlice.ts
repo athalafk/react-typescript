@@ -33,7 +33,7 @@ const notificationSlice = createSlice({
 
 export const { setNotification, clearNotification } = notificationSlice.actions;
 
-export const showNotification = (payload: NotificationPayload, timeout = 3000) => (dispatch: AppDispatch) => {
+export const showNotification = (payload: NotificationPayload, timeout = 2000) => (dispatch: AppDispatch) => {
   dispatch(setNotification(payload));
   setTimeout(() => {
     dispatch(clearNotification());

@@ -1,4 +1,5 @@
-import { TextField, Button, Box } from '@mui/material';
+import { TextField, Box } from '@mui/material';
+import Button from "@/components/Elements/Button";
 
 const FormRegister = () => {
     return (
@@ -45,7 +46,6 @@ const FormRegister = () => {
             <Button
                 type="submit"
                 fullWidth
-                variant="contained"
                 sx={{ mt: 3, mb: 2 }}
             >
                 Register

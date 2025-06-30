@@ -6,7 +6,8 @@ import { fetchProductById } from '@/api/products';
 import { useQuery } from "@tanstack/react-query";
 import { Product } from "@/types";
 import { AppDispatch } from "@/redux/store";
-import { Box, Typography, Button, CircularProgress, Grid, Paper, Chip, Link } from '@mui/material';
+import { Box, Typography, CircularProgress, Grid, Paper, Chip, Link } from '@mui/material';
+import Button from "@/components/Elements/Button";
 
 const DetailProductPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -81,7 +82,6 @@ const DetailProductPage = () => {
                                 {product.price.toLocaleString("id-ID", { style: "currency", currency: "USD" })}
                             </Typography>
                             <Button
-                                variant="contained"
                                 size="large"
                                 onClick={() => handleAddToCart(product)}
                             >

@@ -47,7 +47,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactQueryDevtools initialIsOpen={true} />
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Suspense fallback={<div style = {{ display: 'flex', justifyContent: 'center', alignItems: 'center', height:'100dvh' }}>Loading...</div>}>

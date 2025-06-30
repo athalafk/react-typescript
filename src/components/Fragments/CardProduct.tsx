@@ -1,6 +1,7 @@
 import { memo, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardMedia, CardContent, CardActions, Typography, Button as MuiButton } from '@mui/material';
+import { Card, CardMedia, CardContent, CardActions, Typography } from '@mui/material';
+import Button from '@/components/Elements/Button';
 
 interface CardProductProps {
     children: ReactNode;
@@ -66,9 +67,9 @@ const Footer = memo(({ price, handleAddToCart }: FooterProps) => (
         <Typography variant="h6" color="primary">
             {price.toLocaleString('id-ID', { style: 'currency', currency: 'USD' })}
         </Typography>
-        <MuiButton size="small" variant="contained" onClick={handleAddToCart}>
+        <Button size="small" onClick={handleAddToCart}>
             Add to Cart
-        </MuiButton>
+        </Button>
     </CardActions>
 ));
 

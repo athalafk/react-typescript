@@ -2,8 +2,9 @@ import { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '@/api/auth';
 import { useMutation } from '@tanstack/react-query';
-import { TextField, Button, Box, CircularProgress, Alert } from '@mui/material';
+import { TextField, Box, Alert } from '@mui/material';
 import { LoginCredentials } from '@/types';
+import Button from '@/components/Elements/Button';
 
 const FormLogin = () => {
   const navigate = useNavigate();
@@ -64,14 +65,13 @@ const FormLogin = () => {
         type="password"
         autoComplete="current-password"
       />
-      <Button 
+      <Button
         type="submit"
         fullWidth
-        variant="contained"
         sx={{ mt: 3, mb: 2 }}
-        disabled={mutation.isPending}
+        isLoading={mutation.isPending}
       >
-        {mutation.isPending ? <CircularProgress size={24} /> : 'Login'}
+        Login
       </Button>
     </Box>
   );

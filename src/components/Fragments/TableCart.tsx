@@ -7,8 +7,9 @@ import { showNotification } from "@/redux/features/notificationSlice";
 import { RootState, AppDispatch } from '@/redux/store';
 import { CartItem } from '@/types';
 import {
-    Paper, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton, Button as MuiButton
+    Paper, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton
 } from '@mui/material';
+import Button from '@/components/Elements/Button';
 
 const TableCart = () => {
     const dispatch: AppDispatch = useDispatch();
@@ -75,14 +76,13 @@ const TableCart = () => {
                         {cart.length > 0 && (
                             <TableRow>
                                 <TableCell colSpan={2}>
-                                    <MuiButton
-                                        variant="contained"
+                                    <Button
                                         color="error"
                                         size="small"
                                         onClick={handleClearCart}
                                     >
                                         Clear Cart
-                                    </MuiButton>
+                                    </Button>
                                 </TableCell>
                                 <TableCell colSpan={3} align="right">
                                     <Typography variant="h6">
