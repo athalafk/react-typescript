@@ -10,9 +10,11 @@ import { Box, TextField, Grid, Typography, CircularProgress } from '@mui/materia
 
 import CardProduct from "@/components/Fragments/CardProduct";
 import TableCart from "@/components/Fragments/TableCart";
+import ProductDetailModal from "@/components/Fragments/ProductDetailModal";
 
 const ProductsPage = () => {
     const [search, setSearch] = useState("");
+    const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
     const dispatch: AppDispatch = useDispatch();
 
     const { data: allProducts = [], isLoading, isError, error } = useQuery({
@@ -30,6 +32,14 @@ const ProductsPage = () => {
             message: `Successfully added "${product.title.substring(0, 20)}..." to cart`,
             type: 'success'
         }));
+    };
+
+    const handleOpenModal = (productId: number) => {
+        setSelectedProductId(productId);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedProductId(null);
     };
 
     return (
@@ -58,8 +68,8 @@ const ProductsPage = () => {
                     <Grid container spacing={2}>
                         {!isLoading && !isError && filteredProducts.map((product) => (
                             <Grid key={product.id} size={{xs:12, sm:6, md:4, lg:3, xl:3}}>
-                                <CardProduct>
-                                    <CardProduct.Header image={product.image} id={product.id}/>
+                                <CardProduct handleOpenModal={() => handleOpenModal(product.id)}>
+                                    <CardProduct.Header image={product.image}/>
                                     <CardProduct.Body title={product.title}>
                                         {product.description}
                                     </CardProduct.Body>
@@ -74,6 +84,7 @@ const ProductsPage = () => {
                 </Box>
                 <TableCart />
             </Box>
+            <ProductDetailModal productId={selectedProductId} onClose={handleCloseModal} />
         </>
     );
 };

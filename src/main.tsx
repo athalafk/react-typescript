@@ -15,7 +15,7 @@ import './index.css'
 const LoginPage = lazy(() => import('@/pages/login'));
 const RegisterPage = lazy(() => import('@/pages/register'));
 const ProductsPage = lazy(() => import('@/pages/products'));
-const DetailProductPage = lazy(() => import('@/pages/detailProduct'));
+// const DetailProductPage = lazy(() => import('@/pages/detailProduct'));
 const ErrorPage = lazy(() => import('@/pages/404'));
 
 const queryClient = new QueryClient();
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: '/products', element: <ProductsPage /> },
-      { path: '/product/:id', element: <DetailProductPage /> },
+      // { path: '/product/:id', element: <DetailProductPage /> },
       { path: '/', element: <Navigate to="/products" replace /> },
     ],
   },

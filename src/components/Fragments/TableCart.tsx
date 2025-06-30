@@ -16,6 +16,7 @@ const TableCart = () => {
     const cart = useSelector((state: RootState) => state.cart.data);
 
     const totalPrice = useMemo(() => {
+        console.log('Calculating total price');
         return cart.reduce((acc, item) => acc + item.price * item.qty, 0);
     }, [cart]);
 

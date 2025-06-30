@@ -1,15 +1,14 @@
 import { memo, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 import { Card, CardMedia, CardContent, CardActions, Typography } from '@mui/material';
 import Button from '@/components/Elements/Button';
 
 interface CardProductProps {
     children: ReactNode;
+    handleOpenModal: () => void;
 }
 
 interface HeaderProps {
     image: string;
-    id: number;
 }
 
 interface BodyProps {
@@ -22,24 +21,24 @@ interface FooterProps {
     handleAddToCart: () => void;
 }
 
-const CardProduct = ({ children }: CardProductProps) => (
-    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+const CardProduct = ({ children, handleOpenModal }: CardProductProps) => (
+    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', cursor: 'pointer' }} onClick={handleOpenModal}>
         {children}
     </Card>
 );
 
-const Header = memo(({ image, id }: HeaderProps) => (
-    <Link to={`/product/${id}`}>
-        <CardMedia
-            component="img"
-            sx={{ height: 200, objectFit: 'contain', p: 2 }}
-            image={image}
-            alt="product"
-        />
-    </Link>
+const Header = memo(({ image }: HeaderProps) => (
+    console.log('Render Header'),
+    <CardMedia
+        component="img"
+        sx={{ height: 200, objectFit: 'contain', p: 2 }}
+        image={image}
+        alt="product"
+    />
 ));
 
 const Body = memo(({ title, children }: BodyProps) => (
+    console.log('Render Body'),
     <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom variant="h6" component="div" sx={{
             overflow: 'hidden',
@@ -62,16 +61,25 @@ const Body = memo(({ title, children }: BodyProps) => (
     </CardContent>
 ));
 
+const areEqual = (prevProps: Readonly<FooterProps>, nextProps: Readonly<FooterProps>) => {
+    return prevProps.price === nextProps.price;
+}
+
 const Footer = memo(({ price, handleAddToCart }: FooterProps) => (
+    console.log('Render Footer'),
     <CardActions sx={{ display: 'flex', justifyContent: 'space-between', p: 2 }}>
         <Typography variant="h6" color="primary">
             {price.toLocaleString('id-ID', { style: 'currency', currency: 'USD' })}
         </Typography>
-        <Button size="small" onClick={handleAddToCart}>
+        <Button size="small" onClick={(e) => {
+            e.stopPropagation();
+            handleAddToCart();
+        }}>
             Add to Cart
         </Button>
     </CardActions>
-));
+), areEqual);
+
 
 CardProduct.Header = Header;
 CardProduct.Body = Body;
