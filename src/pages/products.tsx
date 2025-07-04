@@ -20,6 +20,7 @@ const ProductsPage = () => {
     const { data: allProducts = [], isLoading, isError, error } = useQuery({
         queryKey: ['products'],
         queryFn: fetchProducts,
+        staleTime: 1000,
     });
 
     const filteredProducts = allProducts.filter((product) =>

@@ -20,8 +20,9 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "types": ["vite/client", "vitest/globals"]
   },
-  "include": ["src"],
+  "include": ["src", "setup-test.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
