@@ -19,7 +19,6 @@ type RootState = {
   notification: { message: null; type: 'info'; open: false };
 };
 
-
 // 3. Create a "factory" for the mock store with the configured middleware.
 const middlewares = [thunk];
 // @ts-expect-error: redux-mock-store has type conflicts with redux-thunk middleware
