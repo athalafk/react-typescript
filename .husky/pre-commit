@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "Running linter..."
+npm run lint
+echo "Running tester..."
+npm test
