@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import CardProduct from '../components/Fragments/CardProduct';
+import CardProduct from 'src/components/Fragments/CardProduct';
 import { describe, it, expect, vi } from 'vitest';
 
 // Data tiruan untuk digunakan dalam tes

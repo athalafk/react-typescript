@@ -1,5 +1,5 @@
 import { TextField, Box } from '@mui/material';
-import Button from "@/components/Elements/Button";
+import Button from "src/components/Elements/Button";
 
 const FormRegister = () => {
     return (

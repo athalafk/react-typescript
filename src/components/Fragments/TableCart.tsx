@@ -2,14 +2,14 @@ import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { removeItem, clearCart } from "@/redux/features/cartSlice";
-import { showNotification } from "@/redux/features/notificationSlice";
-import { RootState, AppDispatch } from '@/redux/store';
-import { CartItem } from '@/types';
+import { removeItem, clearCart } from "src/redux/features/cartSlice";
+import { showNotification } from "src/redux/features/notificationSlice";
+import { RootState, AppDispatch } from 'src/redux/store';
+import { CartItem } from 'src/types';
 import {
     Paper, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton
 } from '@mui/material';
-import Button from '@/components/Elements/Button';
+import Button from 'src/components/Elements/Button';
 
 const TableCart = () => {
     const dispatch: AppDispatch = useDispatch();

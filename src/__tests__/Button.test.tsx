@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Button from '../components/Elements/Button/index'; 
+import Button from 'src/components/Elements/Button/index'; 
 import { describe, it, expect, vi } from 'vitest';
 
 describe('Button Component', () => {

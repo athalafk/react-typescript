@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { addToCart } from "@/redux/features/cartSlice";
-import { showNotification } from "@/redux/features/notificationSlice";
-import { fetchProducts } from '@/api/products';
+import { addToCart } from "src/redux/features/cartSlice";
+import { showNotification } from "src/redux/features/notificationSlice";
+import { fetchProducts } from 'src/api/products';
 import { useQuery } from '@tanstack/react-query';
-import { Product as ProductType } from "@/types";
-import { AppDispatch } from "@/redux/store";
+import { Product as ProductType } from "src/types";
+import { AppDispatch } from "src/redux/store";
 import { Box, TextField, Grid, Typography, CircularProgress } from '@mui/material';
 
-import CardProduct from "@/components/Fragments/CardProduct";
-import TableCart from "@/components/Fragments/TableCart";
-import ProductDetailModal from "@/components/Fragments/ProductDetailModal";
+import CardProduct from "src/components/Fragments/CardProduct";
+import TableCart from "src/components/Fragments/TableCart";
+import ProductDetailModal from "src/components/Fragments/ProductDetailModal";
 
 const ProductsPage = () => {
     const [search, setSearch] = useState("");

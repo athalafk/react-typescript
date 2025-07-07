@@ -2,21 +2,22 @@ import { StrictMode, lazy, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { store } from './redux/store'
+import { store } from 'src/redux/store'
+import { HelmetProvider } from 'react-helmet-async'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 
-import MainLayout from './components/Layouts/MainLayouts'
-import './index.css'
+import MainLayout from 'src/components/Layouts/MainLayouts'
+import 'src/index.css'
 
-const LoginPage = lazy(() => import('@/pages/login'));
-const RegisterPage = lazy(() => import('@/pages/register'));
-const ProductsPage = lazy(() => import('@/pages/products'));
-// const DetailProductPage = lazy(() => import('@/pages/detailProduct'));
-const ErrorPage = lazy(() => import('@/pages/404'));
+const LoginPage = lazy(() => import('src/pages/login'));
+const RegisterPage = lazy(() => import('src/pages/register'));
+const ProductsPage = lazy(() => import('src/pages/products'));
+// const DetailProductPage = lazy(() => import('src/pages/detailProduct'));
+const ErrorPage = lazy(() => import('src/pages/404'));
 
 const queryClient = new QueryClient();
 
@@ -47,12 +48,14 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={true} />
+        <ReactQueryDevtools initialIsOpen={false} />
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Suspense fallback={<div style = {{ display: 'flex', justifyContent: 'center', alignItems: 'center', height:'100dvh' }}>Loading...</div>}>
-            <RouterProvider router={router} />
-          </Suspense>
+          <HelmetProvider>
+            <Suspense fallback={<div style = {{ display: 'flex', justifyContent: 'center', alignItems: 'center', height:'100dvh' }}>Loading...</div>}>
+              <RouterProvider router={router} />
+            </Suspense>
+          </HelmetProvider>
         </ThemeProvider>
       </QueryClientProvider>
     </Provider>

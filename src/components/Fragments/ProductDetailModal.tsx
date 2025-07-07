@@ -1,14 +1,14 @@
 import {
 Box, Typography, CircularProgress, Grid, Paper, Chip, Modal, IconButton
 } from '@mui/material';
-import { AppDispatch } from "@/redux/store";
+import { AppDispatch } from "src/redux/store";
 import { useDispatch } from 'react-redux';
 import { useQuery } from "@tanstack/react-query";
-import { fetchProductById } from '@/api/products';
-import { addToCart } from "@/redux/features/cartSlice";
-import { showNotification } from "@/redux/features/notificationSlice";
-import { Product } from "@/types";
-import Button from "@/components/Elements/Button";
+import { fetchProductById } from 'src/api/products';
+import { addToCart } from "src/redux/features/cartSlice";
+import { showNotification } from "src/redux/features/notificationSlice";
+import { Product } from "src/types";
+import Button from "src/components/Elements/Button";
 import CloseIcon from '@mui/icons-material/Close';
 
 interface ProductDetailModalProps {

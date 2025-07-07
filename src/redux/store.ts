@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cartReducer from '@/redux/features/cartSlice';
-import notificationReducer from '@/redux/features/notificationSlice';
+import cartReducer from 'src/redux/features/cartSlice';
+import notificationReducer from 'src/redux/features/notificationSlice';
 
 export const store = configureStore({
   reducer: {

@@ -1,4 +1,4 @@
-import * as actionTypes from './actionTypes';
+import * as actionTypes from 'src/redux/actions/actionTypes';
 
 export const addToCart = (product) => {
   return {

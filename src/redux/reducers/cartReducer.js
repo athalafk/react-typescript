@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actionTypes from 'src/redux/actions/actionTypes';
 
 const initialState = {
   cart: JSON.parse(localStorage.getItem("cart")) || [],

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as actionTypes from './actionTypes';
+import * as actionTypes from 'src/redux/actions/actionTypes';
 
 export const fetchProductsStart = () => ({
   type: actionTypes.FETCH_PRODUCTS_START,

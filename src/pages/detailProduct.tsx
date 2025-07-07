@@ -1,13 +1,13 @@
 import { useParams, Link as RouterLink } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { addToCart } from "../redux/features/cartSlice";
-import { showNotification } from "@/redux/features/notificationSlice";
-import { fetchProductById } from '@/api/products';
+import { addToCart } from "src/redux/features/cartSlice";
+import { showNotification } from "src/redux/features/notificationSlice";
+import { fetchProductById } from 'src/api/products';
 import { useQuery } from "@tanstack/react-query";
-import { Product } from "@/types";
-import { AppDispatch } from "@/redux/store";
+import { Product } from "src/types";
+import { AppDispatch } from "src/redux/store";
 import { Box, Typography, CircularProgress, Grid, Paper, Chip, Link } from '@mui/material';
-import Button from "@/components/Elements/Button";
+import Button from "src/components/Elements/Button";
 
 const DetailProductPage = () => {
     const { id } = useParams<{ id: string }>();

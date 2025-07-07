@@ -1,6 +1,6 @@
 import { memo, ReactNode } from 'react';
 import { Card, CardMedia, CardContent, CardActions, Typography } from '@mui/material';
-import Button from '@/components/Elements/Button';
+import Button from 'src/components/Elements/Button';
 
 interface CardProductProps {
     children: ReactNode;

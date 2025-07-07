@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppDispatch } from '@/redux/store';
+import { AppDispatch } from 'src/redux/store';
 
 interface NotificationState {
   message: string;

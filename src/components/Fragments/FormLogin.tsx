@@ -1,10 +1,10 @@
 import { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '@/api/auth';
+import { loginUser } from 'src/api/auth';
 import { useMutation } from '@tanstack/react-query';
 import { TextField, Box, Alert } from '@mui/material';
-import { LoginCredentials } from '@/types';
-import Button from '@/components/Elements/Button';
+import { LoginCredentials } from 'src/types';
+import Button from 'src/components/Elements/Button';
 
 const FormLogin = () => {
   const navigate = useNavigate();
