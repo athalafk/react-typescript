@@ -1,17 +1,19 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import ProductDetailModal from '../components/Fragments/ProductDetailModal';
+import ProductDetailModal from 'src/components/Fragments/ProductDetailModal';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { thunk } from 'redux-thunk';
-import { fetchProductById } from '@/api/products';
-import { Product } from '@/types';
+import { fetchProductById } from 'src/api/products';
+import { Product } from 'src/types';
 
 // -- SETUP AWAL & MOCKING --
 
 // 1. Mock the API module:
-vi.mock('@/api/products');
+vi.mock('src/api/products', () => ({
+  fetchProductById: vi.fn(),
+}));
 
 // 2. Type Definitions and Middleware Configuration for the Redux Mock Store.
 type RootState = {
@@ -58,6 +60,9 @@ const renderModal = (productId: number | null, client: QueryClient, onClose = vi
   );
 };
 
+// Get the mocked function with proper typing
+const mockedFetchProductById = vi.mocked(fetchProductById);
+
 // -- TESTING BLOCK --
 
 describe('ProductDetailModal Component', () => {
@@ -74,7 +79,7 @@ describe('ProductDetailModal Component', () => {
   });
 
   it('should display a loading indicator while fetching data', () => {
-    (fetchProductById as ReturnType<typeof vi.fn>).mockReturnValue(new Promise(() => {}));
+    mockedFetchProductById.mockReturnValue(new Promise(() => {}));
 
     const queryClient = createTestQueryClient();
     renderModal(1, queryClient);
@@ -85,7 +90,7 @@ describe('ProductDetailModal Component', () => {
 
    it('should display an error message if data fetching fails', async () => {
     const errorMessage = 'Failed to fetch';
-    (fetchProductById as ReturnType<typeof vi.fn>).mockRejectedValue(new Error(errorMessage));
+    mockedFetchProductById.mockRejectedValue(new Error(errorMessage));
 
     const queryClient = createTestQueryClient();
     renderModal(1, queryClient);
@@ -94,7 +99,7 @@ describe('ProductDetailModal Component', () => {
   });
 
   it('should display product details when data is fetched successfully', async () => {
-    (fetchProductById as ReturnType<typeof vi.fn>).mockResolvedValue(mockProduct);
+    mockedFetchProductById.mockResolvedValue(mockProduct);
 
     const queryClient = createTestQueryClient();
     renderModal(1, queryClient);
@@ -104,7 +109,7 @@ describe('ProductDetailModal Component', () => {
   });
 
   it('should dispatch addToCart and showNotification actions when "Add to Cart" is clicked', async () => {
-    (fetchProductById as ReturnType<typeof vi.fn>).mockResolvedValue(mockProduct);
+    mockedFetchProductById.mockResolvedValue(mockProduct);
     const queryClient = createTestQueryClient();
     renderModal(1, queryClient);
     
