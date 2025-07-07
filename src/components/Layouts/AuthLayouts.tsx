@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Container, Typography, Link } from '@mui/material';
+import { Helmet } from 'react-helmet-async';
 
 interface AuthLayoutProps {
     children: ReactNode;
@@ -9,6 +10,11 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children, title }: AuthLayoutProps) => {
     return (
+        <>
+        <Helmet>
+            <title>Login | TokoSaya</title>
+            <meta name="description" content="Browse our wide selection of products." />
+        </Helmet>
         <Container component="main" maxWidth="xs">
             <Box
                 sx={{
@@ -33,6 +39,8 @@ const AuthLayout = ({ children, title }: AuthLayoutProps) => {
                 </Typography>
             </Box>
         </Container>
+        </>
+
     )
 }
 

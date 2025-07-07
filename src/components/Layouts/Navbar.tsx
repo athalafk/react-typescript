@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import { useMutation } from '@tanstack/react-query';
-import { logoutUser } from '@/api/auth';
+import { logoutUser } from 'src/api/auth';
 import {
   AppBar, Toolbar, Typography, Button, Menu, MenuItem, CircularProgress, Box, ListItemIcon, ListItemText
 } from '@mui/material';
