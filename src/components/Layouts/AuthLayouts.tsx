@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Container, Typography, Link } from '@mui/material';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 interface AuthLayoutProps {
     children: ReactNode;

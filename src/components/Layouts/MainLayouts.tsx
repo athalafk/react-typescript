@@ -5,7 +5,7 @@ import Navbar from 'src/components/Layouts/Navbar'
 import Notification from 'src/components/Elements/Notification'
 import useAuth from 'src/hooks/useAuth'
 import { Box, Container } from '@mui/material'
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from '@dr.pogodin/react-helmet'
 
 const MainLayout = () => {
     const isAuthenticated = useAuth();
