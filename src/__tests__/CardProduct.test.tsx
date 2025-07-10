@@ -37,7 +37,7 @@ describe('CardProduct Component', () => {
     expect(screen.getByText(mockProduct.description)).toBeInTheDocument();
 
     // Cek Footer: Pastikan harga dirender dengan format yang benar
-    const formattedPrice = mockProduct.price.toLocaleString('id-ID', { style: 'currency', currency: 'USD' });
+    const formattedPrice = mockProduct.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     expect(screen.getByText(formattedPrice)).toBeInTheDocument();
     
     // Cek Footer: Pastikan tombol "Add to Cart" ada
