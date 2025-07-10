@@ -17,8 +17,8 @@ const Navbar = () => {
     const logoutMutation = useMutation({
         mutationFn: logoutUser,
         onSuccess: () => {
-            localStorage.removeItem("access_token");
-            localStorage.removeItem("token_type");
+            localStorage.removeItem("token");
+            // localStorage.removeItem("token_type");
             localStorage.removeItem("username");
             navigate("/login");
         },

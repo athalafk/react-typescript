@@ -1,14 +1,12 @@
-import axios from 'axios';
+import apiClient from './axiosConfig';
 import { Product } from 'src/types';
 
-const API_URL = "https://fakestoreapi.com/products";
-
 export const fetchProducts = async (): Promise<Product[]> => {
-  const { data } = await axios.get<Product[]>(API_URL);
-  return data;
+    const { data } = await apiClient.get<Product[]>('/api/products');
+    return data;
 };
 
 export const fetchProductById = async (id: string): Promise<Product> => {
-  const { data } = await axios.get<Product>(`${API_URL}/${id}`);
-  return data;
+    const { data } = await apiClient.get<Product>(`/api/products/${id}`);
+    return data;
 };
