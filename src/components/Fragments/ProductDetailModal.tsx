@@ -99,7 +99,7 @@ const ProductDetailModal = ({ productId, onClose }: ProductDetailModalProps) => 
                                 </Box>
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 4 }}>
                                     <Typography variant="h4" color="primary" fontWeight="bold">
-                                        {product.price.toLocaleString("id-ID", { style: "currency", currency: "USD" })}
+                                        {`US$${product.price.toLocaleString("en-US")}`}
                                     </Typography>
                                     <Button
                                         size="large"
