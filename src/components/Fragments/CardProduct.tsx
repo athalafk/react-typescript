@@ -69,7 +69,10 @@ const Footer = memo(({ price, handleAddToCart }: FooterProps) => (
     console.log('Render Footer'),
     <CardActions sx={{ display: 'flex', justifyContent: 'space-between', p: 2 }}>
         <Typography variant="h6" color="primary">
-            {`US$${price.toLocaleString("en-US")}`}
+            {`$${price.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            })}`}
         </Typography>
         <Button size="small" onClick={(e) => {
             e.stopPropagation();

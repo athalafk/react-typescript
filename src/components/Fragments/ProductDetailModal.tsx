@@ -99,7 +99,10 @@ const ProductDetailModal = ({ productId, onClose }: ProductDetailModalProps) => 
                                 </Box>
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 4 }}>
                                     <Typography variant="h4" color="primary" fontWeight="bold">
-                                        {`US$${product.price.toLocaleString("en-US")}`}
+                                        {`$${product.price.toLocaleString("en-US", {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                        })}`}
                                     </Typography>
                                     <Button
                                         size="large"

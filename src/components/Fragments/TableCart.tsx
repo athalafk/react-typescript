@@ -63,9 +63,17 @@ const TableCart = () => {
                             cart.map((item) => (
                                 <TableRow key={item.id}>
                                     <TableCell sx={{width: '40%'}}>{item.title}</TableCell>
-                                    <TableCell>{item.price.toLocaleString("id-ID", { style: "currency", currency: "USD" })}</TableCell>
+                                    <TableCell>{`$${item.price.toLocaleString("en-US", {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                    })}`}</TableCell>
                                     <TableCell align="center">{item.qty}</TableCell>
-                                    <TableCell align="right">{(item.price * item.qty).toLocaleString("id-ID", { style: "currency", currency: "USD" })}</TableCell>
+                                    <TableCell align="right">
+                                    {`$${(item.price * item.qty).toLocaleString("en-US", {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                    })}`}
+                                    </TableCell>
                                     <TableCell align="right">
                                         <IconButton size="small" onClick={() => handleRemoveItem(item)} color="error">
                                             <FontAwesomeIcon icon={faTrash} />
@@ -87,7 +95,10 @@ const TableCart = () => {
                                 </TableCell>
                                 <TableCell colSpan={3} align="right">
                                     <Typography variant="h6">
-                                        Total: {totalPrice.toLocaleString("id-ID", { style: "currency", currency: "USD" })}
+                                        Total: {`$${totalPrice.toLocaleString("en-US", {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                        })}`}
                                     </Typography>
                                 </TableCell>
                             </TableRow>

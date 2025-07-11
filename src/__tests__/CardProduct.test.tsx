@@ -37,7 +37,7 @@ describe('CardProduct Component', () => {
     expect(screen.getByText(mockProduct.description)).toBeInTheDocument();
 
     // Cek Footer: Pastikan harga dirender dengan format yang benar
-    expect(screen.getByText(`US$${mockProduct.price.toLocaleString("en-US")}`)).toBeInTheDocument();
+    expect(screen.getByText(`$${mockProduct.price.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2})}`)).toBeInTheDocument();
     
     // Cek Footer: Pastikan tombol "Add to Cart" ada
     expect(screen.getByRole('button', { name: /Add to Cart/i })).toBeInTheDocument();
